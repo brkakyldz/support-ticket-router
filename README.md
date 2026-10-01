@@ -35,6 +35,13 @@ graph TD;
     general --> __end__;
 ```
 
+The same graph in LangGraph Studio, served by `langgraph dev`. A vague ticket has
+stopped at `human_review`, and the interrupt carries what the reviewer needs: the
+ticket, the model's guess (`general`), its reason, its confidence (0.25) and the four
+categories to choose from.
+
+![LangGraph Studio: the ticket_router graph on the left; on the right a vague ticket paused at human_review, with the model's guess "general" at confidence 0.25 and the category options](docs/studio-graph.jpg)
+
 | Building block | Where it lives |
 |---|---|
 | `StateGraph` with a `TypedDict` state and a separate input schema | [`graph.py`](src/support_ticket_router/graph.py): `TicketState`, `TicketInput` (Studio's form asks only for `message`) |
