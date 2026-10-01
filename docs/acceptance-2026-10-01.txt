@@ -1,0 +1,40 @@
+[PASS] 1. graph has four branches + human_review
+       14 edges: __start__->classify, billing->__end__, classify->billing, classify->general, classify->human_review, classify->refund, classify->technical, general->__end__, human_review->billing, human_review->general, human_review->refund, human_review->technical, refund->__end__, technical->__end__
+
+[PASS] 1b. dev server serves the graph Studio draws
+       nodes ['__end__', '__start__', 'billing', 'classify', 'general', 'human_review', 'refund', 'technical']; 14 edges incl. classify -> 5 targets and human_review -> 4 branches
+
+[PASS] 3b. interrupt and resume through the server API (Studio's path)
+       status interrupted, next ['human_review'], payload keys ['confidence', 'message', 'model_category', 'options', 'question', 'reason'], typed resume form fields ['category', 'note']; resumed with {'category': 'general', 'note': 'Too little detail. Ask for the order number and what went wrong.'} -> handled_by 'general'
+
+  T01 expected billing      -> billing (0.99)
+  T02 expected billing      -> billing (0.98)
+  T03 expected billing      -> billing (0.98)
+  T04 expected billing      -> billing (0.98)
+  T05 expected technical    -> technical (0.99)
+  T06 expected technical    -> technical (0.99)
+  T07 expected technical    -> technical (0.98)
+  T08 expected technical    -> technical (0.98)
+  T09 expected refund       -> refund (0.99)
+  T10 expected refund       -> refund (0.98)
+  T11 expected refund       -> refund (0.99)
+  T12 expected general      -> general (0.99)
+  T13 expected general      -> general (0.98)
+  T14 expected general      -> general (0.97)
+  T15 expected general      -> general (0.98)
+  T16 expected human_review -> paused, general (0.30)
+  T17 expected human_review -> paused, general (0.25)
+  T18 expected human_review -> paused, billing (0.55)
+  T19 expected billing      -> billing (0.86)
+  T20 expected human_review -> paused, billing (0.52)
+
+[PASS] 2. clear tickets go to the right branch
+       16/16 routed directly to the expected branch
+
+[PASS] 3. ambiguous tickets pause; the human's choice picks the branch
+       4/4: T16 conf 0.30 -> reviewer chose general -> general; T17 conf 0.25 -> reviewer chose general -> general; T18 conf 0.55 -> reviewer chose billing -> billing; T20 conf 0.52 -> reviewer chose billing -> billing
+
+[PASS] 4. traces in LangSmith show the chosen branch
+       project support-ticket-router, ticket T01 thread 30f26779-b537-4609-b3cb-7728cb15a92b: runs in its trace: ['ChatOpenAI', 'RunnableLambda', 'RunnableSequence', 'billing', 'classify', 'route_after_classify', 'ticket_router']
+
+6/6 checks passed

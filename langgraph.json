@@ -1,0 +1,11 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "ticket_router": {
+      "path": "support_ticket_router.graph:graph",
+      "description": "Support-ticket router with human review for low-confidence tickets"
+    }
+  },
+  "env": ".env",
+  "python_version": "3.12"
+}

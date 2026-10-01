@@ -1,0 +1,35 @@
+[project]
+name = "support-ticket-router"
+version = "0.1.0"
+description = "Support-ticket router: LangGraph StateGraph with confidence routing and human review via interrupt()"
+authors = [{ name = "Berke Akyıldız" }]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-core>=1.6.6",
+    "langchain-openai>=1.6.6",
+    "langgraph>=1.2.12",
+    "langsmith>=0.14.1",
+    "python-dotenv>=1.2.3",
+]
+
+[project.scripts]
+ticket-route = "support_ticket_router.cli:route"
+ticket-samples = "support_ticket_router.cli:samples"
+
+[build-system]
+requires = ["uv_build>=0.11.26,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "langgraph-cli[inmem]>=0.4.32",
+    "pytest>=9.1.1",
+]
+
+[tool.ruff]
+line-length = 140
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

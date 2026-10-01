@@ -1,0 +1,22 @@
+[
+  {"id": "T01", "expected": "billing", "message": "I was charged twice for order #48213. Can you remove the duplicate charge from my card?"},
+  {"id": "T02", "expected": "billing", "message": "Where can I download the invoice for my March order? I need it for my company's accounting."},
+  {"id": "T03", "expected": "billing", "message": "Can I pay for my order in 3 instalments with my credit card?"},
+  {"id": "T04", "expected": "billing", "message": "My monthly Premium membership fee went up this month without any notice. Why am I paying more?"},
+  {"id": "T05", "expected": "technical", "message": "The app crashes every time I open the 'My Orders' tab on my Android phone."},
+  {"id": "T06", "expected": "technical", "message": "I reset my password three times but the login page still says 'invalid credentials'."},
+  {"id": "T07", "expected": "technical", "message": "When I click 'Apply coupon' on the checkout page, the whole page goes blank."},
+  {"id": "T08", "expected": "technical", "message": "Push notifications stopped working after the latest app update."},
+  {"id": "T09", "expected": "refund", "message": "I returned the blue sneakers from order #47788 two weeks ago. When will I get my money back?"},
+  {"id": "T10", "expected": "refund", "message": "The blender I received arrived broken. I'd like to return it and get a full refund."},
+  {"id": "T11", "expected": "refund", "message": "I changed my mind about the jacket I ordered yesterday. How do I send it back and get refunded?"},
+  {"id": "T12", "expected": "general", "message": "Do you ship to Northern Cyprus, and how long does delivery usually take?"},
+  {"id": "T13", "expected": "general", "message": "Is the 6-litre air fryer back in stock yet?"},
+  {"id": "T14", "expected": "general", "message": "How can I change the delivery address on an order that hasn't shipped yet?"},
+  {"id": "T15", "expected": "general", "message": "What are your customer service opening hours?"},
+  {"id": "T16", "expected": "human_review", "message": "Hi, I have a problem with my order. Please help.", "human_decision": {"category": "general", "note": "Too little detail. Ask for the order number and what went wrong."}},
+  {"id": "T17", "expected": "human_review", "message": "This is the third time I'm writing. Nobody answers. Just fix it.", "human_decision": {"category": "general", "note": "Frustrated repeat contact with no details. Apologise, ask for the original ticket or order number."}},
+  {"id": "T18", "expected": "human_review", "message": "Your site took my money but the page crashed and now I can't see any order. I want it back or the order placed, whichever is faster.", "human_decision": {"category": "billing", "note": "Likely a payment captured without an order. Check the payment log before offering a refund."}},
+  {"id": "T19", "expected": "billing", "message": "The discount code didn't apply so I paid full price. Can I get the difference back, or do I have to return the item and reorder?", "note": "Written as ambiguous, but the classifier's category definitions list price adjustments under billing, so it routes directly (0.94 on the first run)."},
+  {"id": "T20", "expected": "human_review", "message": "Two things: the app told me my payment failed but my bank shows the charge, and I also want to return the shoes from my last order.", "human_decision": {"category": "billing", "note": "Handle the possible double charge first; tell the customer a separate return request will follow."}}
+]
