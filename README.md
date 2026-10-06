@@ -1,5 +1,9 @@
 # Support Ticket Router
 
+[![CI](https://github.com/brkakyldz/support-ticket-router/actions/workflows/ci.yml/badge.svg)](https://github.com/brkakyldz/support-ticket-router/actions/workflows/ci.yml)
+
+*Hands-on project for LangChain Academy's [Foundation: Introduction to LangGraph – Python](https://academy.langchain.com/courses/intro-to-langgraph). Built with a LangGraph `StateGraph` with conditional edges, structured output, `interrupt()` / `Command(resume=...)` human review, LangGraph Studio and LangSmith tracing.*
+
 An AI workflow that classifies an online store's support tickets and drafts a reply
 for the appropriate team. Clear tickets go straight to billing, technical support,
 refunds or general customer care. Unclear tickets pause for a person to choose the
